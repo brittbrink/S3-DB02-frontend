@@ -58,7 +58,14 @@ export default function Home() {
                 
             </tbody>
         </table>
+        <br></br>
+        <hr></hr>
+        <br></br>
+        <Link className="btn btn-primary mx-2" to={`/recipes`}>Go To Recipes</Link>
         </div>
     </div>
   )
 }
+
+
+
