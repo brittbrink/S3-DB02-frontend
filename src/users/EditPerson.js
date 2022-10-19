@@ -1,39 +1,50 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-export default function AddUser() {
+export default function EditPerson() {
     
     let navigate=useNavigate();
 
+    const {id}= useParams();
+
     // Store information in this state
-    const [user, setUser]=useState({
+    const [person, setPerson]=useState({
         name:"",
         username:"",
         email:"",
     });
 
-    const {name, username, email}=user;
+    const {name, username, email}=person;
 
     // Function
     const onInputChange=(event)=>{
         
         // Keeps adding new objects
-        setUser({...user, [event.target.name]: event.target.value});
+        setPerson({...person, [event.target.name]: event.target.value});
 
     };
+
+    useEffect(()=>{
+        loadPerson();
+    },[]);
 
     const onSubmit= async (event)=>{
         event.preventDefault();
-        await axios.post("http://localhost:8080/user", user);
+        await axios.put(`http://localhost:8080/person/${id}`, person);
         navigate("/");
     };
+
+    const loadPerson= async (event)=>{
+        const result = await axios.get(`http://localhost:8080/person/${id}`);
+        setPerson(result.data);
+    }
 
   return (
     <div className="container">
         <div className="row">
             <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                <h2 className="text-center m-4">Register User</h2>
+                <h2 className="text-center m-4">Edit Person</h2>
 
                 <form onSubmit={(event)=>onSubmit(event)}>
                     <div className="mb-3">

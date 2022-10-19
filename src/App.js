@@ -4,9 +4,9 @@ import Navbar from './layout/Navbar';
 import Home from './pages/Home';
 import Recipes from "./pages/Recipes";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import AddUser from './users/AddUser';
-import EditUser from './users/EditUser';
-import ViewUser from './users/ViewUser';
+import AddPerson from './users/AddPerson';
+import EditPerson from './users/EditPerson';
+import ViewPerson from './users/ViewPerson';
 
 function App() {
   return (
@@ -16,9 +16,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home/>} />
           <Route exact path="/recipes" element={<Recipes/>} />
-          <Route exact path="/adduser" element={<AddUser/>} />
-          <Route exact path="/edituser/:id" element={<EditUser/>} />
-          <Route exact path="/viewuser/:id" element={<ViewUser/>}/>
+          <Route exact path="/addperson" element={<AddPerson/>} />
+          <Route exact path="/editperson/:id" element={<EditPerson/>} />
+          <Route exact path="/viewperson/:id" element={<ViewPerson/>}/>
         </Routes>
       </Router>
       

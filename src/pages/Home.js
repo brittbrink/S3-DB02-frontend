@@ -4,24 +4,24 @@ import { Link, useParams }  from "react-router-dom";
 
 export default function Home() {
 
-    const [users,setUsers]=useState([]);
+    const [persons,setPersons]=useState([]);
 
     const {id}=useParams();
 
     // open user information in console
     useEffect(()=>{
-       loadUsers();
+       loadPersons();
     },[])
 
     // loading user information in console
-    const loadUsers= async ()=>{
-        const result= await axios.get("http://localhost:8080/users");
-        setUsers(result.data);
+    const loadPersons= async ()=>{
+        const result= await axios.get("http://localhost:8080/persons");
+        setPersons(result.data);
     }
 
-    const deleteUser= async (id)=>{
-        await axios.delete(`http://localhost:8080/user/${id}`);
-        loadUsers();
+    const deletePerson= async (id)=>{
+        await axios.delete(`http://localhost:8080/person/${id}`);
+        loadPersons();
     }
 
   return (
@@ -41,16 +41,16 @@ export default function Home() {
 
                 {
                     // creates new array from calling a function for every array element
-                    users.map((user, index)=>(
+                    persons.map((person, index)=>(
                         <tr>
                             <th scope="row" key={index}>{index+1}</th>
-                            <td>{user.name}</td>
-                            <td>{user.username}</td>
-                            <td>{user.email}</td>
+                            <td>{person.name}</td>
+                            <td>{person.username}</td>
+                            <td>{person.email}</td>
                             <td>
-                                <Link className="btn btn-primary mx-2" to={`/viewuser/${user.id}`}>View</Link>
-                                <Link className="btn btn-outline-primary mx-2" to={`/edituser/${user.id}`}>Edit</Link>
-                                <button className="btn btn-danger mx-2" onClick={()=>deleteUser(user.id)}>Delete</button>
+                                <Link className="btn btn-primary mx-2" to={`/viewperson/${person.id}`}>View</Link>
+                                <Link className="btn btn-outline-primary mx-2" to={`/editperson/${person.id}`}>Edit</Link>
+                                <button className="btn btn-danger mx-2" onClick={()=>deletePerson(person.id)}>Delete</button>
                             </td>
                         </tr>
                     ))

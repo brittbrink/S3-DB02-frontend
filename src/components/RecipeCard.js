@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PastaImage from '../image/Pasta-met-garnalen.jpg'
 
-export default function RecipeCard() {
+export default function RecipeCard(props) {
   return (
     <div className="container">
         <div className="py-4">
@@ -25,10 +25,10 @@ export default function RecipeCard() {
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                Recipe
+                    {props.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                Here you can read what is in the recipe, what ingredients you need and how to prepare the meal.
+                    {props.description} {props.kcal}
                 </Typography>
             </CardContent>
             <CardActions>
