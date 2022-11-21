@@ -9,11 +9,12 @@ export default function Recipes() {
 
     useEffect(()=>{
         loadRecipes();
+        console.log(recipes);
     },[])
 
     // load recipes
     const loadRecipes = async ()=>{
-        const result = await axios.get("http://localhost:8080/recipes");
+        const result = await axios.get("http://localhost:8080/testrecipes");
         setRecipes(result.data);
     }
 
@@ -21,7 +22,7 @@ export default function Recipes() {
     <Grid container spacing={2}>
         { recipes.map((recipe)=>(
             <Grid item xs={12} sm={6} md={3}>
-                <RecipeCard name={recipe.name} description={recipe.description} kcal={recipe.kcal} />
+                <RecipeCard name={recipe.title} description={recipe.description} image={recipe.image} kcal={recipe.calories} />
             </Grid> 
         ))}
     </Grid>
