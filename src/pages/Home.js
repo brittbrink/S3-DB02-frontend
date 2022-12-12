@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams }  from "react-router-dom";
+import { CircularProgress } from '@mui/material';
 
 export default function Home() {
 
     const [persons,setPersons]=useState([]);
+    const [isFetched,setisFetched]=useState(false);
 
     const {id}=useParams();
 
@@ -17,6 +19,7 @@ export default function Home() {
     const loadPersons= async ()=>{
         const result= await axios.get("http://localhost:8080/persons");
         setPersons(result.data);
+        setisFetched(true);
     }
 
     const deletePerson= async (id)=>{
@@ -24,7 +27,13 @@ export default function Home() {
         loadPersons();
     }
 
-  return (
+    if(!isFetched) return(
+
+        <div> 
+            <CircularProgress />
+        </div>
+    );
+    return (
     <div className="container">
         <div className="py-4">
         <table className="table border shadow">
