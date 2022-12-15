@@ -14,7 +14,7 @@ export default function Recipes() {
 
     // load recipes
     const loadRecipes = async ()=>{
-        const result = await axios.get("http://localhost:8080/testrecipes");
+        const result = await axios.get("https://s3-ip-backend.azurewebsites.net/testrecipes");
         setRecipes(result.data);
     }
 

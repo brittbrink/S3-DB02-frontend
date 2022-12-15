@@ -17,13 +17,13 @@ export default function Home() {
 
     // loading user information in console
     const loadPersons= async ()=>{
-        const result= await axios.get("http://localhost:8080/persons");
+        const result= await axios.get("https://s3-ip-backend.azurewebsites.net/persons");
         setPersons(result.data);
         setisFetched(true);
     }
 
     const deletePerson= async (id)=>{
-        await axios.delete(`http://localhost:8080/person/${id}`);
+        await axios.delete(`https://s3-ip-backend.azurewebsites.net/person/${id}`);
         loadPersons();
     }
 

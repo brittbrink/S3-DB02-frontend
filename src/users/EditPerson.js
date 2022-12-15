@@ -31,12 +31,12 @@ export default function EditPerson() {
 
     const onSubmit= async (event)=>{
         event.preventDefault();
-        await axios.put(`http://localhost:8080/person/${id}`, person);
+        await axios.put(`https://s3-ip-backend.azurewebsites.net/person/${id}`, person);
         navigate("/");
     };
 
     const loadPerson= async (event)=>{
-        const result = await axios.get(`http://localhost:8080/person/${id}`);
+        const result = await axios.get(`https://s3-ip-backend.azurewebsites.net/person/${id}`);
         setPerson(result.data);
     }
 

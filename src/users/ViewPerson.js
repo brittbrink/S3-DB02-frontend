@@ -17,7 +17,7 @@ export default function ViewPerson() {
     },[]);
 
     const loadPerson= async ()=>{
-        const result = await axios.get(`http://localhost:8080/person/${id}`);
+        const result = await axios.get(`https://s3-ip-backend.azurewebsites.net/person/${id}`);
         setPersons(result.data);
     };
 

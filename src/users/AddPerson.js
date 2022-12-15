@@ -25,7 +25,7 @@ export default function AddPerson() {
 
     const onSubmit= async (event)=>{
         event.preventDefault();
-        await axios.post("http://localhost:8080/person", person);
+        await axios.post("https://s3-ip-backend.azurewebsites.net/person", person);
         navigate("/");
     };
 
