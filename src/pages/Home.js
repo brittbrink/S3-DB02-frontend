@@ -70,7 +70,7 @@ export default function Home() {
         <br></br>
         <hr></hr>
         <br></br>
-        <Link className="btn btn-primary mx-2" to={`/recipes`}>Go To Recipes</Link>
+        <Link className="btn btn-outline-warning mx-2" to={`/recipes`}>Go To Recipes</Link>
         </div>
     </div>
   )

@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <div>
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-warning">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          React Application
+          Food Recipes
+        </Link>
+        <Link className="navbar-brand" to="/">
+          Favorites
         </Link>
         <button 
           className="navbar-toggler" 
@@ -26,12 +29,6 @@ export default function Navbar() {
         </Link>
       </div>
     </nav>
-
-
-
-
-
-
         
     </div>
   )
