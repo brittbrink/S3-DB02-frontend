@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import HeartIcon from '../image/heart-icon.png'
+import { ButtonBase } from '@mui/material';
 //import PastaImage from '../image/Pasta-met-garnalen.jpg'
 
 export default function RecipeCard(props) {
@@ -20,6 +21,7 @@ export default function RecipeCard(props) {
                 },
                 backgroundColor: '#E4E4E4'
             }}>
+            <ButtonBase>
             <CardMedia
                 component="img"
                 height="140"
@@ -48,6 +50,7 @@ export default function RecipeCard(props) {
                 alt="heart icon image"
             />
             </div>
+            </ButtonBase>
             </Card>
         </div>
     </div>

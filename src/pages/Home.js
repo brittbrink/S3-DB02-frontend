@@ -3,10 +3,12 @@ import axios from 'axios';
 import { Link, useParams }  from "react-router-dom";
 import { CircularProgress } from '@mui/material';
 
+
 export default function Home() {
 
     const [persons,setPersons]=useState([]);
     const [isFetched,setisFetched]=useState(false);
+    
 
     const {id}=useParams();
 

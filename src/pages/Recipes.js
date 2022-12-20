@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import Grid from '@mui/material/Grid'
-import RecipeCard from '../components/RecipeCard'
+import React, { useEffect, useState } from 'react';
+import Grid from '@mui/material/Grid';
+import RecipeCard from '../components/RecipeCard';
+import RecipePopUp from '../components/RecipePopUp';
 import axios from 'axios';
 
 export default function Recipes() {
 
     const [recipes, setRecipes]= useState([]);
+    // const [open, setOpen] = useState(false);
+    // const handleOpen = () => setOpen(true);
+    // const handleClose = () => setOpen(false);
 
     useEffect(()=>{
         loadRecipes();
@@ -17,6 +21,14 @@ export default function Recipes() {
         const result = await axios.get("https://s3-ip-backend.azurewebsites.net/testrecipes");
         setRecipes(result.data);
     }
+
+
+    // setOpen(true);
+
+    // const handleClose = () => {
+    //     console.log("ik handleclose");
+    //     setOpen(false);
+    // };
 
   return (
     <Grid container spacing={2}>
