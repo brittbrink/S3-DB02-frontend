@@ -18,7 +18,6 @@ const style = {
 
 export default function ModalPopUp(props) {
   console.log("Laad hij in?");
-  console.log("orderID: "+ props.orderID + "tableNumber:" + props.tableNumber);
   return (
       <Modal
         open={props.open}
@@ -31,7 +30,7 @@ export default function ModalPopUp(props) {
             Order is done!
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            The dish {props.dishName} from table {props.tableNumber} is ready to be served.
+            The dish  from table  is ready to be served.
           </Typography>
         </Box>
       </Modal>

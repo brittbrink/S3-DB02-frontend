@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import CardActionArea from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import HeartIcon from '../image/heart-icon.png'
-import { ButtonBase } from '@mui/material';
+import ModalPopUp from './RecipePopUp';
 //import PastaImage from '../image/Pasta-met-garnalen.jpg'
 
 export default function RecipeCard(props) {
+const [open, setOpen] = useState(false);
+const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div className="container">
         <div className="py-4">
@@ -21,7 +26,7 @@ export default function RecipeCard(props) {
                 },
                 backgroundColor: '#E4E4E4'
             }}>
-            <ButtonBase>
+            <CardActionArea onClick={() => setOpen(true)}>
             <CardMedia
                 component="img"
                 height="140"
@@ -39,19 +44,11 @@ export default function RecipeCard(props) {
                 </Typography>
             </CardContent>
             <div style={{display: 'flex', justifyContent:'flex-end', marginRight: '10px'}}>
-            <CardMedia
-                style={{
-                width: "auto",
-                maxHeight: "50px",
-                justifyContent: "right"
-                }}
-                component="img"
-                image={HeartIcon}
-                alt="heart icon image"
-            />
+            <Button color='warning'> Add to favorites </Button>
             </div>
-            </ButtonBase>
+            </CardActionArea>
             </Card>
+            <ModalPopUp open={open} onClose={handleClose}/>
         </div>
     </div>
   );
