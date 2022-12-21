@@ -7,9 +7,6 @@ import axios from 'axios';
 export default function Recipes() {
 
     const [recipes, setRecipes]= useState([]);
-    // const [open, setOpen] = useState(false);
-    // const handleOpen = () => setOpen(true);
-    // const handleClose = () => setOpen(false);
 
     useEffect(()=>{
         loadRecipes();
@@ -18,17 +15,9 @@ export default function Recipes() {
 
     // load recipes
     const loadRecipes = async ()=>{
-        const result = await axios.get("https://s3-ip-backend.azurewebsites.net/testrecipes");
+        const result = await axios.get("https://s3-ip-backend.azurewebsites.net/get/recipes/nutrients");
         setRecipes(result.data);
     }
-
-
-    // setOpen(true);
-
-    // const handleClose = () => {
-    //     console.log("ik handleclose");
-    //     setOpen(false);
-    // };
 
   return (
     <Grid container spacing={2}>
