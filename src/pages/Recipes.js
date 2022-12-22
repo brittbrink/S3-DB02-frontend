@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function Recipes() {
 
     const [recipes, setRecipes]= useState([]);
-
+   
     useEffect(()=>{
         loadRecipes();
         console.log(recipes);
@@ -23,7 +23,7 @@ export default function Recipes() {
     <Grid container spacing={2}>
         { recipes.map((recipe)=>(
             <Grid item xs={12} sm={6} md={3}>
-                <RecipeCard name={recipe.title} description={recipe.description} image={recipe.image} kcal={recipe.calories} />
+                <RecipeCard name={recipe.title} description={recipe.description} image={recipe.image} kcal={recipe.calories} recipeID={recipe.id} />
             </Grid> 
         ))}
     </Grid>

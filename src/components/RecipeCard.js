@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Card from '@mui/material/Card';
+import axios from 'axios';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -12,9 +13,24 @@ import ModalPopUp from './RecipePopUp';
 
 export default function RecipeCard(props) {
 const [open, setOpen] = useState(false);
+const [serving, setServing]=useState([]);
+
+
 const handleClose = () => {
     setOpen(false);
   };
+
+    
+  useEffect(()=>{
+    loadServing();
+  },[])
+
+  // load recipes
+  const loadServing = async ()=>{
+    const result = await axios.get(`https://s3-ip-backend.azurewebsites.net/get/recipes/servings/${props.recipeID}`);
+    setServing(result.data);
+}
+
   return (
     <div className="container">
         <div className="py-4">
@@ -35,7 +51,7 @@ const handleClose = () => {
             />
             <CardContent style={{backgroundColor: "#D3D2D2", padding: "6px"}}>
                 <Typography variant="body2" color="text.secondary">
-                    {props.kcal} kcal
+                    {props.kcal} kcal  {serving.servings} personen
                 </Typography>
             </CardContent>
             <CardContent style={{padding: "15px"}}>
@@ -48,7 +64,7 @@ const handleClose = () => {
             </div>
             </CardActionArea>
             </Card>
-            <ModalPopUp open={open} onClose={handleClose}/>
+            <ModalPopUp open={open} onClose={handleClose} recipeID={props.recipeID}/>
         </div>
     </div>
   );

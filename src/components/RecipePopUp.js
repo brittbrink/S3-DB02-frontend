@@ -1,8 +1,10 @@
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import axios from "axios";
+
 
 const style = {
   position: 'absolute',
@@ -18,6 +20,21 @@ const style = {
 
 export default function ModalPopUp(props) {
   console.log("Laad hij in?");
+
+  const [recipe,setRecipe]=useState([]);
+
+  useEffect(()=>{
+    loadRecipes();
+  },[])
+
+ // load recipes
+  const loadRecipes = async ()=>{
+  const result = await axios.get(`https://s3-ip-backend.azurewebsites.net/get/recipes/summary/${props.recipeID}`);
+  setRecipe(result.data);
+}
+
+  console.log(props.recipeID);
+  console.log(recipe);
   return (
       <Modal
         open={props.open}
@@ -30,7 +47,7 @@ export default function ModalPopUp(props) {
             Recipe summary:
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }} color={"#fff"}>
-            summary
+              {recipe.summary}
           </Typography>
         </Box>
       </Modal>
